@@ -1,11 +1,20 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import Dashboard from "../components/Dashboard/Dashboard";
 import Navbar from "../components/Navbar";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 
 const MainRoutes = () => {
+  const { pathname } = useLocation();
+  if (pathname === "/walter-wallet/dashboard") {
+    return (
+      <Routes>
+        <Route path={pathname} element={<Dashboard />} />
+      </Routes>
+    );
+  }
   return (
     <>
       <Navbar />
