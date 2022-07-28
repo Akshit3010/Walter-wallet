@@ -7,9 +7,14 @@ import db from "../DB/db";
 const app: Express = express();
 app.use(cors())
 
+// Body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Expense Manager");
 });
+app.use("/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 8080;
 
