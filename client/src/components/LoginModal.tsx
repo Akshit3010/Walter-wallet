@@ -1,70 +1,91 @@
-import React from "react";
+import { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import styles from "./styles/LoginModal.module.css";
 import { Cross, Info } from "./Icons";
+import { Link } from "react-router-dom";
 
 export default function LoginModal() {
-   return (
-      <div className={styles.container}>
-         <div className={styles.modal}>
-            <div className={styles.modal_head}>
-               Sign In
-               <Cross />
-            </div>
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-            <div className={styles.modal_mid}>
-               <input type="text" placeholder="Email Address*" className={styles.emailInput} />
-               <input type="password" placeholder="Password*" className={styles.passInput} />
-               <div
-                  style={{
-                     display: "flex",
-                     justifyContent: "space-between",
-                     height: "40px",
-                  }}
-               >
-                  <span
-                     style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        fontSize: 14,
-                     }}
-                  >
-                     <input type="checkbox" />
-                     Remember Me
-                     <Info />
-                  </span>
-                  <span
-                     style={{
-                        fontSize: 14,
-                        color: "rgb(100, 92, 255)",
-                        fontWeight: "bold",
-                        cursor: "pointer",
-                     }}
-                  >
-                     Forgot Password?
-                  </span>
-               </div>
-               <button type="button" className={styles.signInBtn}>
-                  SIGN IN
-               </button>
-               <div className={styles.mid_footer}>
-                  This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of
-                  Service apply.
-               </div>
-            </div>
-            <div className={styles.modal_bottom}>
-               Don't have an account?{" "}
-               <span
-                  style={{
-                     color: "rgb(100, 92, 255)",
-                     marginLeft: "20px",
-                     cursor: "pointer",
-                  }}
-               >
-                  Sign Up Now
-               </span>
-            </div>
-         </div>
+  const handleSignin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        //dispatch this to backend
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        //show error
+        console.log(errorMessage);
+      });
+  };
+  return (
+    <div className={styles.container}>
+      <div className={styles.modal}>
+        <div className={styles.modal_head}>
+          Sign In
+          <Cross />
+        </div>
+
+        <form className={styles.modal_mid} onSubmit={handleSignin}>
+          <input
+            type="text"
+            placeholder="Email Address*"
+            className={styles.emailInput}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password*"
+            className={styles.passInput}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              height: "40px",
+            }}
+          >
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                fontSize: 14,
+              }}
+            >
+              <input type="checkbox" />
+              Remember Me
+              <Info />
+            </span>
+          </div>
+          <button type="submit" className={styles.signInBtn}>
+            SIGN IN
+          </button>
+        </form>
+        <div className={styles.modal_bottom}>
+          Don't have an account?{" "}
+          <span
+            style={{
+              color: "rgb(100, 92, 255)",
+              marginLeft: "20px",
+              cursor: "pointer",
+            }}
+          >
+            <Link to="/walter-wallet/register"> Sign Up Now</Link>
+          </span>
+        </div>
       </div>
-   );
+    </div>
+  );
 }

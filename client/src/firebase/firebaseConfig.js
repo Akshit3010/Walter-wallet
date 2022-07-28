@@ -2,13 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const app = initializeApp({
-  apiKey: `${import.meta.env.VITE_APP_FIREBASE_API_KEY}`,
-  authDomain: ` ${import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN}`,
-  projectId: `${import.meta.env.VITE_APP_FIREBASE_PROJECT_ID}`,
-  storageBucket: `${import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET}`,
-  messagingSenderId: `${import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID}`,
-  appId: `${import.meta.env.VITE_APP_FIREBASE_APP_ID}`,
+  apiKey: `AIzaSyBDkj7pH5EVNpOfefGGjHUkkpI0lpTt8Vs`,
+  authDomain: `walter-wallet-936dc.firebaseapp.com`,
+  projectId: `walter-wallet-936dc`,
+  storageBucket: `walter-wallet-936dc.appspot.com`,
+  messagingSenderId: `784025454259`,
+  appId: `1:784025454259:web:c7c86fd6e8ac86b6ebd2c6`,
 });
-
 
 const db = getAuth(app);
