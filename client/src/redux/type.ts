@@ -24,4 +24,4 @@ type initUserType = {
   user: userType[];
 };
 
-export type {  initBalanceType, initUserType };
+export type { initBalanceType, initUserType };

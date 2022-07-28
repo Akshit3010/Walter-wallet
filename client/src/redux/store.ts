@@ -1,10 +1,12 @@
 import {
   legacy_createStore as createStore,
   applyMiddleware,
+  combineReducers,
   compose,
 } from "redux";
 import thunk from "redux-thunk";
 import { balanceReducer } from "./balance/reducer";
+import { initBalanceType, initUserType } from "./type";
 import { userReducer } from "./user/reducer";
 
 declare global {
@@ -13,18 +15,15 @@ declare global {
   }
 }
 
-// export interface IRootState {
-//   demo: IDemoState
-// }
-// const store = createStore<IRootState, any, any, any>(
-//   combineReducers({
-//       demo: demoReducer
-// }));
+type reducerType = {
+  user: initUserType;
+  balance: initBalanceType;
+};
 
-const Reducer = {
+const Reducer = combineReducers({
   user: userReducer,
   balance: balanceReducer,
-};
+});
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -33,4 +32,4 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 );
 
-export const store = createStore(Reducer, enhancer);
+export const store = createStore<reducerType, any, any, any>(Reducer, enhancer);
