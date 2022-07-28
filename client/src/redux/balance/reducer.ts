@@ -1,8 +1,6 @@
 import { initBalanceType } from "../type";
 import { BALANCE_ERROR, BALANCE_LOADING, BALANCE_SUCCESS } from "./action";
 
-
-
 const init: initBalanceType = {
   loading: false,
   error: false,
@@ -10,20 +8,32 @@ const init: initBalanceType = {
 };
 
 export const balanceReducer = (
-  state = init,
+  state: initBalanceType = init,
   action: { type: string; payload: any }
-) => {
+): initBalanceType => {
   switch (action.type) {
     case BALANCE_LOADING:
-      break;
+      return {
+        loading: true,
+        error: false,
+        balance: [],
+      };
 
     case BALANCE_SUCCESS:
-      break;
+      return {
+        loading: false,
+        error: false,
+        balance: action.payload,
+      };
 
     case BALANCE_ERROR:
-      break;
+      return {
+        loading: false,
+        error: true,
+        balance: [],
+      };
 
     default:
-      return state
+      return state;
   }
 };

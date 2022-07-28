@@ -1,8 +1,6 @@
 import { initUserType } from "../type";
 import { USER_ERROR, USER_LOADING, USER_SUCCESS } from "./action";
 
-
-
 const init: initUserType = {
   loading: false,
   error: false,
@@ -10,20 +8,32 @@ const init: initUserType = {
 };
 
 export const userReducer = (
-  state = init,
+  state: initUserType = init,
   action: { type: string; payload: any }
-) => {
+): initUserType => {
   switch (action.type) {
     case USER_LOADING:
-      break;
+      return {
+        loading: true,
+        error: false,
+        user: [],
+      };
 
     case USER_SUCCESS:
-      break;
+      return {
+        loading: false,
+        error: false,
+        user: action.payload,
+      };
 
     case USER_ERROR:
-      break;
+      return {
+        loading: false,
+        error: true,
+        user: [],
+      };
 
     default:
-      return state
+      return state;
   }
 };
