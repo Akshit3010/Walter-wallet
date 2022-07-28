@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 
 const MainRoutes = () => {
+
     return (
         <>
             <Navbar />
@@ -16,6 +17,7 @@ const MainRoutes = () => {
             </Routes>
         </>
     );
+
 };
 
 export default MainRoutes;
