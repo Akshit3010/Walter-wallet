@@ -1,18 +1,20 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import cors from "cors";
+dotenv.config();
 import db from "../DB/db";
 
-dotenv.config();
-
 const app: Express = express();
-const port = process.env.PORT || 8080;
+app.use(cors())
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Expense Manager");
 });
 
-app.listen(port, () => {
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
   db.then((conn) => {
-    console.log(`Server is running at https://localhost:${port}`);
+    console.log(`Server is running at https://localhost:${PORT}`);
   });
 });

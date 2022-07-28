@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
-const connection = mongoose.connect("mongodb://localhost:27017/walter-white");
+const mongoDB = process.env.MongoAtlas;
+
+const connection = mongoose.connect(`${mongoDB}`);
 
 export default connection;
