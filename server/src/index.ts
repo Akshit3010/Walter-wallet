@@ -38,7 +38,7 @@ app.post("/send", (req, res) => {
     const {name, email, subject, message} = req.body;
     var mail = {
         from: name,
-        to: email,
+        to: "imyash.654@gmail.com",
         subject: subject,
         text: message
       }
