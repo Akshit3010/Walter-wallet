@@ -59,3 +59,22 @@ export const LoginUser: callbackFxn =
         error(err.message);
       });
   };
+
+export const LogoutUser: callbackFxn =
+  () => (dispatch: ({}) => AppDispatch) => {
+    dispatch({
+      type: USER_LOADING,
+    });
+    axios
+      .post("http://localhost:8080/walter-wallet/logout")
+      .then((res) => {
+        dispatch({
+          type: USER_SUCCESS,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: USER_ERROR,
+        });
+      });
+  };
