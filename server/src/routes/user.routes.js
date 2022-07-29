@@ -5,9 +5,10 @@ const { userModel } = require("../models/user.model");
 const userRouter = Router();
 
 userRouter.post("/register", async (req, res) => {
-  const { name, email, role } = req.body;
-  const { message, status } = await createUser(name, email, role);
+  const { name, email, role } = req.body.payload;
 
+  const { message, status } = await createUser(name, email, role);
+  console.log(message, status);
   if (status === "error") {
     return res.status(404).send({ message, status });
   }
@@ -16,7 +17,7 @@ userRouter.post("/register", async (req, res) => {
 
 userRouter.post("/login", async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email } = req.body.payload;
     const user = await userModel.find({ email });
     return res
       .cookie("walterwallet", email, {

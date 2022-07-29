@@ -22,7 +22,7 @@ export const createUser: callbackFxn =
         dispatch({
           type: USER_SUCCESS,
         });
-        notify(res.data);
+        notify(res.data.message);
       })
       .catch((err) => {
         console.log(err);
@@ -44,13 +44,19 @@ export const LoginUser: callbackFxn =
       type: USER_LOADING,
     });
     axios
-      .post("http://localhost:8080/walter-wallet/login", { payload })
+      .post(
+        "http://localhost:8080/walter-wallet/login",
+        { payload },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         dispatch({
           type: USER_SUCCESS,
           payload: res.data,
         });
-        notify(res.data);
+        notify(res.data.message);
       })
       .catch((err) => {
         dispatch({
