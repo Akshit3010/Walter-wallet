@@ -1,7 +1,8 @@
-import { Router } from "express";
-import { createUser } from "../controllers/user.controller";
+const { Router } = require("express");
+const { createUser } = require("../controllers/user.controller");
+const { userModel } = require("../models/user.model");
 
-export const userRouter = Router();
+const userRouter = Router();
 
 userRouter.post("/register", async (req, res) => {
   const { name, email, role } = req.body;
@@ -16,14 +17,34 @@ userRouter.post("/register", async (req, res) => {
 userRouter.post("/login", async (req, res) => {
   try {
     const { email } = req.body;
+    const user = await userModel.find({ email });
     return res
-      .cookie("walter-wallet", email, {
+      .cookie("walterwallet", email, {
         httpOnly: true,
         secure: false,
         expires: new Date(Date.now() + 30 * 86400 * 100),
       })
       .status(200)
-      .send({ message: "login successful", status: "success" });
+      .send({ message: "login successful", status: "success", data: user });
+  } catch (err) {
+    return res
+      .status(404)
+      .send({ message: "something went wrong", status: "error" });
+  }
+});
+
+userRouter.post("/checklogin", async (req, res) => {
+  try {
+    const email = req.cookies.walterwallet;
+    const user = await userModel.find({ email });
+    if (!user) {
+      return res
+        .status(401)
+        .send({ message: "session expired", status: "failed" });
+    }
+    return res
+      .status(200)
+      .send({ message: "login successful", status: "success", data: user });
   } catch (err) {
     return res
       .status(404)
@@ -33,7 +54,7 @@ userRouter.post("/login", async (req, res) => {
 
 userRouter.post("/logout", async (req, res) => {
   try {
-    res.clearCookie("walter-wallet");
+    res.clearCookie("walterwallet");
     return res
       .status(200)
       .send({ message: "signout successful", status: "success" });
@@ -43,3 +64,5 @@ userRouter.post("/logout", async (req, res) => {
       .send({ message: "something went wrong", status: "error" });
   }
 });
+
+module.exports = { userRouter };
