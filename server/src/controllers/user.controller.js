@@ -1,7 +1,8 @@
-import { userModel } from "../models/user.model";
+const { userModel } = require("../models/user.model");
 
-export const createUser = async (name: string, email: string, role: string) => {
+const createUser = async (name, email, role) => {
   try {
+
     const newUser = {
       name,
       email,
@@ -16,3 +17,4 @@ export const createUser = async (name: string, email: string, role: string) => {
   }
 };
 
+module.exports = { createUser };

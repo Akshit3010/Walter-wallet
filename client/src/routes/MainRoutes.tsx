@@ -17,7 +17,6 @@ import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 
 const MainRoutes = () => {
-
   const { pathname } = useLocation();
   if (
     pathname === "/walter-wallet/dashboard" ||

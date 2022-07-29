@@ -2,6 +2,7 @@ import React from "react";
 import ChatArea from "./Chat/ChatArea";
 import SideSection from "./SideSection";
 import Total_balance from "./Total_balance";
+import Transactions from "./Transactions/Transactions";
 
 const MidSection = () => {
   return (
@@ -15,8 +16,9 @@ const MidSection = () => {
           <br />
           <ChatArea />
         </div>
-        <div className="w-[780px]">
+        <div className="w-[780px] overflow-hidden">
           <SideSection />
+          <Transactions />
         </div>
       </div>
     </>
