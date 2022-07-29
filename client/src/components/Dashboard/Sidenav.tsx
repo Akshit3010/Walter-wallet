@@ -15,28 +15,28 @@ const Sidenav = () => {
             <ul id="dashboard_nav" className="flex flex-col mt-10">
               <NavLink
                 to={"walter-wallet/dashboard"}
-                className="flex items-center cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
+                className="flex items-center text-gray-600  text-[14px] cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
               >
                 <RiDashboardFill className="text-xl" />
                 Dashboard
               </NavLink>
               <NavLink
                 to={"/walter-wallet/money"}
-                className="flex items-center cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
+                className="flex items-center text-gray-600  text-[14px] cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
               >
                 <FaRegMoneyBillAlt className="text-xl" />
                 Money
               </NavLink>
               <NavLink
                 to={"/walter-wallet/transaction"}
-                className="flex items-center cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
+                className="flex items-center text-gray-600  text-[14px] cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
               >
                 <GrTransaction className="text-xl" />
                 Transactions
               </NavLink>
               <NavLink
                 to={"/walter-wallet/settings"}
-                className="flex items-center cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
+                className="flex items-center text-gray-600 text-[14px]  cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
               >
                 <RiUserSettingsLine className="text-xl" />
                 Account Settings
@@ -44,8 +44,8 @@ const Sidenav = () => {
             </ul>
           </div>
 
-          <div className="flex items-center cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300">
-            <IoLogOut className="text-xl " />
+          <div className="flex items-center  text-gray-600  text-[14px] cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300">
+            <IoLogOut className="text-xl" />
             <p>Logout</p>
           </div>
         </div>

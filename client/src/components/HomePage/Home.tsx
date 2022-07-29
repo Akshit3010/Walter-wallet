@@ -1,6 +1,5 @@
 import styles from "./Home.module.css";
 import { FcBookmark } from "react-icons/fc";
-import { MdLaptopWindows } from "react-icons/md";
 
 export default function Home() {
    return (

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import ChatModel from "./ChatModel";
 
 const ChatFriends = () => {
   const customers = [
@@ -39,9 +40,10 @@ const ChatFriends = () => {
     "rgb(52, 254, 164)",
     "rgb(47, 230, 250)",
   ];
-
+  const [active, setActive] = useState(false);
   return (
     <>
+      {active && <ChatModel setActive={setActive} />}
       <div className="px-2 py-2 w-full">
         <h1 className="text-xl font-bold">Chats</h1>
         {customers.map((c, i) => {
@@ -51,12 +53,18 @@ const ChatFriends = () => {
               <p
                 style={{ backgroundColor: `${colors[color]}` }}
                 className="rounded-[100%] w-[50px] h-[44px] cursor-pointer flex items-center justify-center font-bold text-xl"
+                onClick={() => setActive(true)}
               >
                 {c.name[0]}
               </p>
               <div className="flex justify-between w-full px-4 border-b-2 py-1">
                 <div>
-                  <p className="font-bold cursor-pointer">{c.name}</p>
+                  <p
+                    className="font-bold cursor-pointer"
+                    onClick={() => setActive(true)}
+                  >
+                    {c.name}
+                  </p>
                   <p className="text-sm">{c.message}</p>
                 </div>
                 <p className="text-sm">{c.time}</p>
