@@ -3,11 +3,13 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Dashboard from "../components/Dashboard/Dashboard";
 import Navbar from "../components/Navbar";
+import ContactPage from "../pages/ContactPage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 
 const MainRoutes = () => {
+
   const { pathname } = useLocation();
   if (pathname === "/walter-wallet/dashboard") {
     return (
