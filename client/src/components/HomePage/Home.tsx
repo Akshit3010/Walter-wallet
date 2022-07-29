@@ -22,7 +22,7 @@ export default function Home() {
 
          <div className="flex justify-center items-center h-[300px] bg-[#eee]">
             <div className="flex-col items-center w-[80%]">
-               <div className="text-center text-[24px] font-semibold">
+               <div className="text-center text-[26px] font-semibold text-blue-600">
                   We're helping you to remove STRESS
                </div>
                <div className="text-center my-5">
