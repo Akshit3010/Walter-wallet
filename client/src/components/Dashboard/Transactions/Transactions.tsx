@@ -1,6 +1,7 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Transactions = () => {
+  const navigate = useNavigate();
   const Data = [
     {
       name: "John Doe",
@@ -88,6 +89,7 @@ const Transactions = () => {
                   <tr
                     key={i}
                     className="h-[60px] cursor-pointer hover:shadow-md pb-6 hover:transition-all"
+                    onClick={() => navigate("/walter-wallet/user/transaction")}
                   >
                     <td className="text-[14px]  text-left px-2 py-2">
                       {item.name}
