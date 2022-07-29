@@ -5,8 +5,9 @@ import ChatModel from "./ChatModel";
 const ChatFriends = () => {
   const { user } = useSelector((state: any) => state.user);
   const customers = [];
-  console.log(user);
-  customers.push(user[1]);
+  if (user[1]) {
+    customers.push(user[1]);
+  }
 
   const colors = [
     "rgb(147, 195, 236)",

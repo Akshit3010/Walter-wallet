@@ -1,11 +1,25 @@
 import React from "react";
 import { FiSend } from "react-icons/fi";
+import useChat from "./Hooks/useChat";
+import "./ChatModel.css";
 
 type propType = {
   setActive: (v: boolean) => void;
 };
 
 const ChatModel = ({ setActive }: propType) => {
+  const { messages, sendMessage } = useChat(1234);
+  const [newMessage, setNewMessage] = React.useState("");
+
+  const handleNewMessageChange = (event: any) => {
+    setNewMessage(event.target.value);
+  };
+
+  const handleSendMessage = (e: any) => {
+    e.preventDefault();
+    sendMessage(newMessage);
+    setNewMessage("");
+  };
   return (
     <>
       <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.5)] w-full h-full flex items-center justify-center">
@@ -19,12 +33,30 @@ const ChatModel = ({ setActive }: propType) => {
               X
             </span>
           </div>
+          <div className="messages-container">
+            <ol className="messages-list">
+              {messages.map((message: any, i: any) => (
+                <li
+                  key={i}
+                  className={`message-item ${
+                    message.ownedByCurrentUser
+                      ? "my-message"
+                      : "received-message"
+                  }`}
+                >
+                  {message.body}
+                </li>
+              ))}
+            </ol>
+          </div>
           <div className="absolute bottom-2 left-0 w-full px-2">
-            <form className="flex">
+            <form className="flex" onSubmit={handleSendMessage}>
               <input
                 className="border-none bg-gray-200 px-2 py-2 rounded-xl w-full mx-2 outline-none"
                 type="text"
                 placeholder="Type a  message"
+                value={newMessage}
+                onChange={handleNewMessageChange}
               />
               <button
                 type="submit"
