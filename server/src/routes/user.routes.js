@@ -5,7 +5,7 @@ const { userModel } = require("../models/user.model");
 const userRouter = Router();
 
 userRouter.post("/register", async (req, res) => {
-  const { name, email, role } = req.body.payload;
+  const { name, email, role } = req.body;
 
   const { message, status } = await createUser(name, email, role);
   console.log(message, status);
@@ -17,12 +17,14 @@ userRouter.post("/register", async (req, res) => {
 
 userRouter.post("/login", async (req, res) => {
   try {
-    const { email } = req.body.payload;
+    const { email } = req.body;
     const user = await userModel.find({ email });
+    console.log(user);
     return res
       .cookie("walterwallet", email, {
         httpOnly: true,
-        secure: false,
+        secure: true,
+        sameSite: "none",
         expires: new Date(Date.now() + 30 * 86400 * 100),
       })
       .status(200)

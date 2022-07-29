@@ -13,7 +13,7 @@ const app = express();
 const corsOptions = {
   origin: true, //included origin as true
   credentials: true, //included credentials as true
-  sameSite: "none",
+  SameSite: "none",
 };
 app.set("trustproxy", 1);
 app.use(cors(corsOptions));

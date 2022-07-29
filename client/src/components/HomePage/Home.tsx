@@ -11,8 +11,7 @@ export default function Home() {
             <div className="flex text-6xl font-bold overflow-hidden h-[80px]">
               Manage your Accounts
             </div>
-            <div className={styles.desc_3}>Save your Time & Memory</div>
-            <div>
+            <div className="mt-14">
               <h2 className="text-3xl font-medium mb-6">
                 Pros of using <span>WALTER WALLET</span>
               </h2>
@@ -31,7 +30,7 @@ export default function Home() {
                 <hr className="my-3 w-[300px] border-y-2" />
               </ul>
             </div>
-            <div className="absolute top-[37%] left-[57%]">
+            <div className="absolute top-[26%] left-[57%]">
               <img className="w-[570px] opacity-80" src={Logo} alt="logo" />
             </div>
             {/* <div className="w-full flex justify-end mt-[-70px]">
