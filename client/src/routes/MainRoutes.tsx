@@ -8,11 +8,13 @@ import Money from "../components/Dashboard/Money";
 import Settings from "../components/Dashboard/Settings";
 import Transactions from "../components/Dashboard/Transactions";
 import Navbar from "../components/Navbar";
+import ContactPage from "../pages/ContactPage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 
 const MainRoutes = () => {
+
   const { pathname } = useLocation();
   if (
     pathname === "/walter-wallet/dashboard" ||
