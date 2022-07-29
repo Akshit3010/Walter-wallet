@@ -12,7 +12,7 @@ export default function Navbar() {
           <ul className="list-none flex justify-center gap-5">
             <NavLink to="/walter-wallet">Home</NavLink>
             <NavLink to="/walter-wallet/about">About</NavLink>
-            <NavLink to="/walter-wallet/contact">Contact Us</NavLink>
+            <NavLink to="/walter-wallet/contact-us">Contact Us</NavLink>
           </ul>
         </div>
         <div className="flex flex-1 gap-5 items-center justify-end">
