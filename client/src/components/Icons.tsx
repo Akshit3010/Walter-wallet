@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export const Cross = () => {
+   const navigate = useNavigate();
    return (
       <svg
          xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +11,7 @@ export const Cross = () => {
          stroke="currentColor"
          strokeWidth={2}
          style={{ cursor: "pointer" }}
+         onClick={() => navigate("/walter-wallet")}
       >
          <path
             strokeLinecap="round"
