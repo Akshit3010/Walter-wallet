@@ -14,7 +14,7 @@ const Sidenav = () => {
             <img className="px-6" src={Logo} alt="Logo" />
             <ul id="dashboard_nav" className="flex flex-col mt-10">
               <NavLink
-                to={"/walter-wallet/dashboard"}
+                to={"walter-wallet/dashboard"}
                 className="flex items-center cursor-pointer gap-2 px-8 py-4 hover:bg-slate-100 hover:pl-10 hover:transition-all duration-300"
               >
                 <RiDashboardFill className="text-xl" />
