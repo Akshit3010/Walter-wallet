@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 import { FaAddressBook } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addCustomer } from "../../../redux/balance/action";
+
+type formType = {
+  email: string;
+  name: string;
+};
 
 const Customer = () => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState<formType>({
+    email: "",
+    name: "",
+  });
+  const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -14,7 +25,10 @@ const Customer = () => {
 
   const handleCustomer = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
+    const payload = {
+      email: form.email,
+    };
+    dispatch(addCustomer(payload));
   };
   return (
     <>

@@ -54,7 +54,7 @@ export const LoginUser: callbackFxn =
       .then((res) => {
         dispatch({
           type: USER_SUCCESS,
-          payload: res.data,
+          payload: res.data.data,
         });
         notify(res.data.message);
       })
@@ -72,10 +72,42 @@ export const LogoutUser: callbackFxn =
       type: USER_LOADING,
     });
     axios
-      .post("http://localhost:8080/walter-wallet/logout")
+      .post(
+        "http://localhost:8080/walter-wallet/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         dispatch({
           type: USER_SUCCESS,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: USER_ERROR,
+        });
+      });
+  };
+
+export const checkLogin: callbackFxn =
+  () => (dispatch: ({}) => AppDispatch) => {
+    dispatch({
+      type: USER_LOADING,
+    });
+    axios
+      .post(
+        "http://localhost:8080/walter-wallet/checklogin",
+        {},
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        dispatch({
+          type: USER_SUCCESS,
+          payload: res.data.data,
         });
       })
       .catch((err) => {

@@ -3,7 +3,7 @@ const { addContumer } = require("../controllers/balance.controller");
 
 const balanceRouter = Router();
 
-balanceRouter.post("/addContumer", async (req, res) => {
+balanceRouter.post("/addCustomer", async (req, res) => {
   const { email } = req.body;
   const user = req.cookies.walterwallet;
   if (!user) {
