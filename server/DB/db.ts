@@ -1,7 +1,9 @@
-import mongoose from "mongoose";
+import mongoose, { ConnectOptions } from "mongoose";
 
-const mongoDB = process.env.MongoAtlas;
-
-const connection = mongoose.connect(`${mongoDB}`);
+const connection = mongoose.connect(`${process.env.MongoAtlas}`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  autoIndex: true,
+} as ConnectOptions);
 
 export default connection;
