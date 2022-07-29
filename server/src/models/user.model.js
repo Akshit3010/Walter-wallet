@@ -13,7 +13,7 @@ const UserSchema = new Schema(
     role: {
       type: String,
       required: [true, "Please add a role"],
-      enum: ["merchant", "costumer"],
+      enum: ["merchant", "customer"],
     },
     balanceId: [Schema.Types.ObjectId],
   },

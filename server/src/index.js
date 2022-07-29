@@ -10,7 +10,13 @@ const { balanceRouter } = require("./routes/balance.routes");
 const session = require("express-session");
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: true, //included origin as true
+  credentials: true, //included credentials as true
+  sameSite: "none",
+};
+app.set("trustproxy", 1);
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(
   session({
