@@ -4,9 +4,9 @@ import { ToastContainer } from "react-toastify";
 import Customer from "../components/Dashboard/Customer/Customer";
 import Dashboard from "../components/Dashboard/Dashboard";
 import MidSection from "../components/Dashboard/MidSection";
-import Money from "../components/Dashboard/Money";
-import Settings from "../components/Dashboard/Settings";
-import Transactions from "../components/Dashboard/Transactions";
+import Money from "../components/Dashboard/Money/Money";
+import Settings from "../components/Dashboard/Settings/Settings";
+import Transactions from "../components/Dashboard/Transactions/Transactions";
 import Navbar from "../components/Navbar";
 import ContactPage from "../pages/ContactPage";
 import HomePage from "../pages/HomePage";
@@ -14,7 +14,6 @@ import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 
 const MainRoutes = () => {
-
   const { pathname } = useLocation();
   if (
     pathname === "/walter-wallet/dashboard" ||
