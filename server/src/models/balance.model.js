@@ -13,7 +13,7 @@ const BalanceSchema = new Schema(
       required: [true, "constumer"],
     },
     transaction: {
-      type: [{ TransactionSchema }],
+      type: [TransactionSchema ],
       required: [true, "transaction"],
     },
   },

@@ -8,11 +8,14 @@ const addContumer = async (email, user) => {
     // console.log(newCostumer, loggedInUser);
 
     const newBalance = {
-      to: newCostumer[0]._id,  //costumer
-      transaction: 0,                 
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      deleted: false,
+      to: newCostumer[0]._id, //costumer
+      transaction: [
+        {
+          amount: 0,
+          createdAt: new Date(),
+          deleted: false,
+        },
+      ],
     };
     const balance = new balanceModel(newBalance);
     // console.log(balance);
