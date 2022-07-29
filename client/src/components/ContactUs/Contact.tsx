@@ -13,7 +13,7 @@ export default function Contact() {
       e.preventDefault();
       axios({
          method: "POST",
-         url: "http://localhost:8080/send",
+         url: "https://walter-wallet.vercel.app/send",
          data: { state },
       }).then((response) => {
          if (response.data.status === "success") {
