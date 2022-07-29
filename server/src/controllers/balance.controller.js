@@ -1,15 +1,15 @@
 const { balanceModel } = require("../models/balance.model");
 const { userModel } = require("../models/user.model");
 
-const addContumer = async (email, user) => {
+const addCustomer = async (email, user) => {
   try {
     const newCostumer = await userModel.find({ email });
     const loggedInUser = await userModel.find({ email: user });
     // console.log(newCostumer, loggedInUser);
 
     const newBalance = {
-      to: newCostumer[0]._id,  //costumer
-      transaction: 0,                 
+      to: newCostumer[0]._id, //costumer
+      transaction: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
       deleted: false,
@@ -32,4 +32,4 @@ const addContumer = async (email, user) => {
   }
 };
 
-module.exports = { addContumer };
+module.exports = { addCustomer };

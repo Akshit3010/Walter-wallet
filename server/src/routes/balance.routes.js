@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { addContumer } = require("../controllers/balance.controller");
+const { addCustomer } = require("../controllers/balance.controller");
 
 const balanceRouter = Router();
 
@@ -11,7 +11,7 @@ balanceRouter.post("/addCustomer", async (req, res) => {
       .status(401)
       .send({ message: "session expired", status: "failed" });
   }
-  const { message, status } = await addContumer(email, user);
+  const { message, status } = await addCustomer(email, user);
   res.send({ message, status });
 });
 
