@@ -9,10 +9,14 @@ const addCustomer = async (email, user) => {
 
     const newBalance = {
       to: newCostumer[0]._id, //costumer
-      transaction: 0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      deleted: false,
+
+      transaction: [
+        {
+          amount: 0,
+          createdAt: new Date(),
+          deleted: false,
+        },
+      ],
     };
     const balance = new balanceModel(newBalance);
     // console.log(balance);
