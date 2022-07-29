@@ -58,6 +58,7 @@ export default function SignUpModal() {
             style={{
               display: "flex",
               justifyContent: "space-between",
+              height: "30px"
             }}
           >
             <span
