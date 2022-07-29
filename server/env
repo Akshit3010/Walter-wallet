@@ -1,0 +1,5 @@
+MongoAtlas = mongodb+srv://DBuser:AhVPCMgGG1BjcKAG@cluster0.rvfzo.mongodb.net/walterwalletDB?retryWrites=true&w=majority
+
+SECRET_KEY = q#89IufU&RUFPofi#qELDJF873ER93
+EMAIL=lilyan41@ethereal.email
+PASSWORD=mdRjWMaHBqzcbvKVEy
