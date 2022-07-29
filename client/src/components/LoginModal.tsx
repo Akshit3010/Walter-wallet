@@ -3,11 +3,20 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import styles from "./styles/LoginModal.module.css";
 import { Cross, Info } from "./Icons";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch, TypedDispatch } from "../redux/store";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { LoginUser } from "../redux/user/action";
 
 export default function LoginModal() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const notify = (msg: string) => toast(msg);
+  const error = (msg: string) => toast.error(msg);
+  const dispatch: (fn: () => any) => AppDispatch = useDispatch<TypedDispatch>();
 
   const handleSignin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,13 +27,17 @@ export default function LoginModal() {
         const user = userCredential.user;
         //dispatch this to backend
         console.log(user);
+        const payload = {
+          email,
+        };
+        dispatch(LoginUser(payload, notify, error));
         // ...
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      .catch((err) => {
+        const errorCode = err.code;
+        const errorMessage = err.message;
         //show error
-        console.log(errorMessage);
+        error(err.code.split("/")[1]);
       });
   };
   return (

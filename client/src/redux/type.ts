@@ -24,4 +24,5 @@ type initUserType = {
   user: userType[];
 };
 
+export type callbackFxn = (...args: any) => any;
 export type { initBalanceType, initUserType };
