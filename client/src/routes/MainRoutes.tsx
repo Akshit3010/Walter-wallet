@@ -7,6 +7,9 @@ import MidSection from "../components/Dashboard/MidSection";
 import Money from "../components/Dashboard/Money";
 import Settings from "../components/Dashboard/Settings";
 import Transactions from "../components/Dashboard/Transactions";
+import Gave from "../components/Dashboard/User/Gave";
+import Got from "../components/Dashboard/User/Got";
+import UserTransaction from "../components/Dashboard/User/UserTransaction";
 import Navbar from "../components/Navbar";
 import ContactPage from "../pages/ContactPage";
 import HomePage from "../pages/HomePage";
@@ -21,7 +24,10 @@ const MainRoutes = () => {
     pathname === "/walter-wallet/money" ||
     pathname === "/walter-wallet/transaction" ||
     pathname === "/walter-wallet/settings" ||
-    pathname === "/walter-wallet/add-customer"
+    pathname === "/walter-wallet/add-customer" ||
+    pathname === "/walter-wallet/user/transaction" ||
+    pathname === "/walter-wallet/user/gave" ||
+    pathname === "/walter-wallet/user/got" 
   ) {
     return (
       <Routes>
@@ -31,6 +37,9 @@ const MainRoutes = () => {
           <Route path="walter-wallet/money" element={<Money />} />
           <Route path="walter-wallet/transaction" element={<Transactions />} />
           <Route path="walter-wallet/settings" element={<Settings />} />
+          <Route path="walter-wallet/user/transaction" element={<UserTransaction />} />
+          <Route path="walter-wallet/user/gave" element={<Gave />} />
+          <Route path="walter-wallet/user/got" element={<Got />} />
         </Route>
       </Routes>
     );
