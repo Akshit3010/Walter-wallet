@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   const { user } = useSelector((state: any) => state.user);
+  console.log(user);
   if (!user || user.length === 0) {
     return <Navigate to={"/"} />;
   }
 
-  console.log(user);
   return (
     <main className="w-full bg-[#F2F3F7] h-screen flex">
       <Sidenav />

@@ -15,7 +15,7 @@ const UserSchema = new Schema(
       required: [true, "Please add a role"],
       enum: ["merchant", "customer"],
     },
-    balanceId: [Schema.Types.ObjectId],
+    balanceId: [{ type: Schema.Types.ObjectId, ref: "balanceModel" }],
   },
   { collection: "user" }
 );

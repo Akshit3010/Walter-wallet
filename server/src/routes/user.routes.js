@@ -39,16 +39,21 @@ userRouter.post("/login", async (req, res) => {
 userRouter.post("/checklogin", async (req, res) => {
   try {
     const email = req.cookies.walterwallet;
-    const user = await userModel.find({ email });
-    console.log(user, email);
+    const user = await userModel.find({ email }).populate("balanceId").exec();
     if (!user) {
       return res
         .status(401)
         .send({ message: "session expired", status: "failed" });
     }
-    return res
-      .status(200)
-      .send({ message: "login successful", status: "success", data: user });
+    const id = user[0].balanceId[0].to;
+    const customer = await userModel.findById(id);
+    user.push(customer);
+
+    return res.status(200).send({
+      message: "login successful",
+      status: "success",
+      data: user,
+    });
   } catch (err) {
     return res
       .status(404)

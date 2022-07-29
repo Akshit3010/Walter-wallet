@@ -16,7 +16,7 @@ export default function Home() {
     dispatch(checkLogin());
   }, []);
 
-  if (user.length > 0) {
+  if (user?.length > 0) {
     return <Navigate to={"/walter-wallet/dashboard"} />;
   }
   return (
