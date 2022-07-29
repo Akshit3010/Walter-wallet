@@ -1,8 +1,24 @@
 import styles from "./Home.module.css";
 import { FcBookmark } from "react-icons/fc";
 import Logo from "../../assets/Logo3.png";
+import { useEffect } from "react";
+import { checkLogin } from "../../redux/user/action";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 export default function Home() {
+  const { user } = useSelector((state: any) => state.user);
+
+  const dispatch = useDispatch();
+  console.log(user);
+  useEffect(() => {
+    dispatch(checkLogin());
+  }, []);
+
+  if (user.length > 0) {
+    return <Navigate to={"/walter-wallet/dashboard"} />;
+  }
   return (
     <>
       <div className={styles.container}>

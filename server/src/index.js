@@ -13,9 +13,9 @@ const app = express();
 const corsOptions = {
   origin: true, //included origin as true
   credentials: true, //included credentials as true
-  SameSite: "none",
+  // SameSite: "none",
 };
-app.set("trustproxy", 1);
+// app.set("trustproxy", 1);
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(

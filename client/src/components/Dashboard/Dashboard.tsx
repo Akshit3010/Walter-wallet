@@ -3,16 +3,23 @@ import Sidenav from "./Sidenav";
 import { BiSearch } from "react-icons/bi";
 import { FaAddressBook } from "react-icons/fa";
 import MidSection from "./MidSection";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
+  const { user } = useSelector((state: any) => state.user);
+  if (!user || user.length === 0) {
+    return <Navigate to={"/"} />;
+  }
+
+  console.log(user);
   return (
     <main className="w-full bg-[#F2F3F7] h-screen flex">
       <Sidenav />
       <section className="ml-8 mt-4 w-[80%]">
         <div className="flex justify-between">
           <h1 className="text-4xl font-bold overflow-hidden">
-            Welcome back , User
+            Welcome back, {user && user[0]?.name}
           </h1>
           <div className="flex gap-8">
             <Link

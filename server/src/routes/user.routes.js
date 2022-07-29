@@ -40,6 +40,7 @@ userRouter.post("/checklogin", async (req, res) => {
   try {
     const email = req.cookies.walterwallet;
     const user = await userModel.find({ email });
+    console.log(user, email);
     if (!user) {
       return res
         .status(401)
@@ -57,11 +58,18 @@ userRouter.post("/checklogin", async (req, res) => {
 
 userRouter.post("/logout", async (req, res) => {
   try {
-    res.clearCookie("walterwallet");
+    const email = "email";
     return res
+      .cookie("walterwallet", email, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+        expires: new Date(Date.now() - 30 * 86400 * 100),
+      })
       .status(200)
       .send({ message: "signout successful", status: "success" });
   } catch (err) {
+    console.log(err);
     return res
       .status(404)
       .send({ message: "something went wrong", status: "error" });
