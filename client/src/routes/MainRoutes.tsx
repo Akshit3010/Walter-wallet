@@ -52,6 +52,7 @@ const MainRoutes = () => {
         <Route path="/walter-wallet" element={<HomePage />} />
         <Route path="/walter-wallet/login" element={<LoginPage />} />
         <Route path="/walter-wallet/register" element={<SignupPage />} />
+        <Route path="/walter-wallet/contact-us" element={<ContactPage />} />
       </Routes>
     </>
   );
