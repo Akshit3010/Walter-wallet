@@ -22,7 +22,7 @@ const ChatModel = ({ setActive }: propType) => {
   };
   return (
     <>
-      <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.5)] w-full h-full flex items-center justify-center">
+      <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.5)] w-full h-full flex items-center justify-center overflow-hidden">
         <div className="relative bg-white w-[70%] h-[80vh] rounded-lg">
           <div className="py-4 px-4 flex justify-between">
             <h1 className="font-bold  text-xl">ChatRoom</h1>
