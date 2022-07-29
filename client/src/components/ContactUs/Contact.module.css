@@ -1,0 +1,19 @@
+.form_control:focus {
+    outline: none;
+    border: none;
+}
+.form_text {
+    width: 100%;
+}
+.form_text:focus {
+    outline: none;
+    border: none;
+}
+
+.form_control:-webkit-autofill,
+.form_control:-webkit-autofill:hover, 
+.form_control:-webkit-autofill:focus, 
+.form_control:-webkit-autofill:active{
+    box-shadow: none;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
