@@ -1,10 +1,12 @@
+import { TypedUseSelectorHook, useSelector } from "react-redux";
 import {
   legacy_createStore as createStore,
   applyMiddleware,
   combineReducers,
   compose,
+  AnyAction,
 } from "redux";
-import thunk from "redux-thunk";
+import thunk, { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { balanceReducer } from "./balance/reducer";
 import { initBalanceType, initUserType } from "./type";
 import { userReducer } from "./user/reducer";
@@ -33,3 +35,15 @@ const enhancer = composeEnhancers(
 );
 
 export const store = createStore<reducerType, any, any, any>(Reducer, enhancer);
+
+/* Types */
+export type AppDispatch = typeof store.dispatch;
+export type ReduxState = ReturnType<typeof Reducer>;
+export type TypedDispatch = ThunkDispatch<ReduxState, any, AnyAction>;
+export type TypedThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  ReduxState,
+  unknown,
+  AnyAction
+>;
+export const useTypedSelector: TypedUseSelectorHook<ReduxState> = useSelector;

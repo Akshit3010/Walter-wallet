@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Dashboard from "../components/Dashboard/Dashboard";
 import Navbar from "../components/Navbar";
 import HomePage from "../pages/HomePage";
@@ -17,6 +18,7 @@ const MainRoutes = () => {
   }
   return (
     <>
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/walter-wallet" />} />
