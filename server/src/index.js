@@ -10,12 +10,12 @@ const { balanceRouter } = require("./routes/balance.routes");
 const session = require("express-session");
 
 const app = express();
-const corsOptions = {
-   origin: true, //included origin as true
-   credentials: true, //included credentials as true
-   sameSite: "none",
-};
 app.set("trustproxy", 1);
+const corsOptions = {
+  origin: true, //included origin as true
+  credentials: true, //included credentials as true
+  SameSite: "none",
+};
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(
@@ -27,8 +27,8 @@ app.use(
 );
 
 // Body parser
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Routes
 app.use("/walter-wallet", userRouter);
