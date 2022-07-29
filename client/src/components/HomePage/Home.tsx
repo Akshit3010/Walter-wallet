@@ -1,35 +1,40 @@
-import React from "react";
-import Logo from "../../assets/Logo.png";
 import styles from "./Home.module.css";
+import { FcBookmark } from "react-icons/fc";
+import { MdLaptopWindows } from "react-icons/md";
 
 export default function Home() {
-   const style = {
-      backgroundImage:
-         "https://images.unsplash.com/photo-1597673030062-0a0f1a801a31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1596&q=80",
-   };
    return (
       <>
          <div className={styles.container}>
             <div className={styles.parent}>
-               <div className="flex-col">
-                  <div className="flex justify-center">
-                     <img src={Logo} alt="" width="30%" />
+               <div>
+                  <div className="flex text-6xl font-bold overflow-hidden h-[80px]">
+                     Manage your Accounts
                   </div>
                   <div className={styles.desc_3}>Save your Time & Memory</div>
-               </div>
-            </div>
-         </div>
-
-         <div className="flex justify-center items-center h-[300px] bg-[#eee]">
-            <div className="flex-col items-center w-[80%]">
-               <div className="text-center text-[26px] font-semibold text-blue-600">
-                  We're helping you to remove STRESS
-               </div>
-               <div className="text-center my-5">
-                  As the world moves online, we at Walter Wallet are making sure the small and
-                  medium businesses are part of this digital revolution too. With our range of
-                  desktop applications we aim to empower these merchants with the internet and make
-                  doing business easy for them.
+                  <div>
+                     <h2 className="text-3xl font-medium mb-6">
+                        Pros of using <span>WALTER WALLET</span>
+                     </h2>
+                     <ul>
+                        <li className="flex items-center">
+                           <span>{<FcBookmark />}</span>Digital Ledger App
+                        </li>
+                        <hr className="my-3 w-[300px] border-y-2" />
+                        <li className="flex items-center">
+                           <span>{<FcBookmark />}</span>Tally your Data from anywhere
+                        </li>
+                        <hr className="my-3 w-[300px] border-y-2" />
+                        <li className="flex items-center">
+                           <span>{<FcBookmark />}</span>Deal with Incomes & Expenses
+                        </li>
+                        <hr className="my-3 w-[300px] border-y-2" />
+                     </ul>
+                  </div>
+                  {/* <div className="w-full flex justify-end mt-[-70px]">
+                     <MdLaptopWindows />
+                     <div className="flex items-center mx-2">Join us</div>
+                  </div> */}
                </div>
             </div>
          </div>
