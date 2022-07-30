@@ -33,6 +33,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("Walter Wallet")
+})
 app.use("/walter-wallet", userRouter);
 app.use("/walter-wallet/dashboard", balanceRouter);
 
@@ -78,7 +81,7 @@ app.post("/send", (req, res) => {
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   db.then((conn) => {
-    console.log(`Server is running at https://localhost:${PORT}`);
+    console.log(`Server is running at http://localhost:${PORT}`);
   });
 });
 
