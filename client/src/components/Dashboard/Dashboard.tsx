@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidenav from "./Sidenav";
 import { BiSearch } from "react-icons/bi";
 import { FaAddressBook } from "react-icons/fa";
@@ -8,6 +8,9 @@ import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   const { user } = useSelector((state: any) => state.user);
+  useEffect(() => {
+    document.title = "Walter Wallet - Dashboard"
+  }, [])
   console.log(user);
   if (!user || user.length === 0) {
     return <Navigate to={"/"} />;
