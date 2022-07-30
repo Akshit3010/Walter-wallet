@@ -13,7 +13,7 @@ export const addCustomer: callbackFxn =
     });
     axios
       .post(
-        "http://localhost:8080/walter-wallet/dashboard/addCustomer",
+        "https://walter-wallet-server.vercel.app/walter-wallet/dashboard/addCustomer",
         { ...payload },
         {
           withCredentials: true,

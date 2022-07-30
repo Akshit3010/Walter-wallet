@@ -17,7 +17,9 @@ export const createUser: callbackFxn =
       type: USER_LOADING,
     });
     axios
-      .post("http://localhost:8080/walter-wallet/register", { ...payload })
+      .post("https://walter-wallet-server.vercel.app/walter-wallet/register", {
+        ...payload,
+      })
       .then((res) => {
         dispatch({
           type: USER_SUCCESS,
@@ -45,7 +47,7 @@ export const LoginUser: callbackFxn =
     });
     axios
       .post(
-        "http://localhost:8080/walter-wallet/login",
+        "https://walter-wallet-server.vercel.app/walter-wallet/login",
         { ...payload },
         {
           withCredentials: true,
@@ -73,7 +75,7 @@ export const LogoutUser: callbackFxn =
     });
     axios
       .post(
-        "http://localhost:8080/walter-wallet/logout",
+        "https://walter-wallet-server.vercel.app/walter-wallet/logout",
         {},
         {
           withCredentials: true,
@@ -98,7 +100,7 @@ export const checkLogin: callbackFxn =
     });
     axios
       .post(
-        "http://localhost:8080/walter-wallet/checklogin",
+        "https://walter-wallet-server.vercel.app/walter-wallet/checklogin",
         {},
         {
           withCredentials: true,
